@@ -5,5 +5,6 @@ public class Main {
         Player p1 = new Player("Vedant");
 
         System.out.println("Player Position : " + p1.position);
+        p1.rollDie();
     }
 }
