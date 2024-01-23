@@ -2,17 +2,19 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
-    Integer position;
-    String name;
-
+    public Integer position;
+    public String name;
+    public Integer diceRollCount;
     Player(String name){
         System.out.println("Enter your name:");
         Scanner reader = new Scanner(System.in);
         this.name = reader.nextLine();
         this.position = 0;
+        this.diceRollCount = 0;
     }
 
     public void rollDie() {
+        this.diceRollCount += 1;
         Integer rolled = new Dice().roll();
         System.out.println(this.name + " rolled " + rolled);
         if (this.position+rolled <= 100) {

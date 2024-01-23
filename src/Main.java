@@ -9,7 +9,7 @@ public class Main {
         while (p1.position<100) {
             p1.rollDie();
         }
-        System.out.println("Game Finished");
+        System.out.println("Game Finished, Dice rolled : " + p1.diceRollCount + " Times");
 
     }
 }
