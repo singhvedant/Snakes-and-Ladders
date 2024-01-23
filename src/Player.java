@@ -15,24 +15,24 @@ public class Player {
     public void rollDie() {
         Integer rolled = new Dice().roll();
         System.out.println(this.name + " rolled " + rolled);
-
-        //Check for Random Option
-        int rand = new Random().nextInt(4);
-        switch (rand) {
-            case 1: noPlay(rolled);break;
-            case 2: ladder(rolled);break;
-            case 3: snake(rolled);break;
+        if (this.position+rolled <= 100) {
+            this.position += rolled;
+            System.out.println("New Position : " + this.position);
+            int rand = new Random().nextInt(5);
+            switch (rand) {
+                case 1: break;
+                case 2: break;
+                case 3: ladder(rolled);break;
+                case 4: snake(rolled);break;
+            }
+        } else {
+            System.out.println("Move Nullified...need " + (100 - this.position));
         }
     }
 
-    public void noPlay(int rolled) {
-        System.out.println("No Play!");
-    }
-
     public void ladder(int rolled) {
-        this.position += rolled;
-        if (this.position>100) {
-            this.position = 100;
+        if (this.position+rolled < 100) {
+            this.position += rolled;
         }
         System.out.println("Ladder gained. New Position : " + this.position);
     }
