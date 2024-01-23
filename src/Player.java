@@ -6,9 +6,7 @@ public class Player {
     public String name;
     public Integer diceRollCount;
     Player(String name){
-        System.out.println("Enter your name:");
-        Scanner reader = new Scanner(System.in);
-        this.name = reader.nextLine();
+        this.name = name;
         this.position = 0;
         this.diceRollCount = 0;
     }
@@ -20,6 +18,10 @@ public class Player {
         if (this.position+rolled <= 100) {
             this.position += rolled;
             System.out.println("New Position : " + this.position);
+            if (this.position == 100){
+                System.out.println(this.name + " won the game.");
+                return;
+            }
             int rand = new Random().nextInt(5);
             switch (rand) {
                 case 1: break;
@@ -35,15 +37,16 @@ public class Player {
     public void ladder(int rolled) {
         if (this.position+rolled < 100) {
             this.position += rolled;
+            System.out.println("Ladder gained. New Position : " + this.position);
+            this.rollDie();
         }
-        System.out.println("Ladder gained. New Position : " + this.position);
     }
 
     public void snake(int rolled) {
         this.position -= rolled;
         if (this.position<0) {
             this.position = 0;
+            System.out.println("Snake Bite. New Position : " + this.position);
         }
-        System.out.println("Snake Bite. New Position : " + this.position);
     }
 }
